@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:p="http://www.springframework.org/schema/p"
+xmlns:aop="http://www.springframework.org/schema/aop"
+xmlns:tx="http://www.springframework.org/schema/tx"
+xmlns:mvc="http://www.springframework.org/schema/mvc"
+xmlns:context="http://www.springframework.org/schema/context"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop.xsd
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+	
+	<!-- 定义扫描包的路径 -->
+	<context:component-scan 
+		base-package="com.guigu.instructional.system.controller,com.guigu.instructional.system.service.impl,
+		com.guigu.instructional.marketactive.controller,com.guigu.instructional.marketactive.service.impl,
+		com.guigu.instructional.recruitstudent.controller,com.guigu.instructional.recruitstudent.service.impl,
+		com.guigu.instructional.student.controller,com.guigu.instructional.student.service.impl,
+		com.guigu.instructional.classinfo.controller,com.guigu.instructional.classinfo.service.Impl,
+		com.guigu.instructional.finance.controller,com.guigu.instructional.finance.service.impl">
+	
+	</context:component-scan>
+	
+	<!-- 使用注解适配器 -->
+    <mvc:annotation-driven conversion-service="conversionService"/>
+    
+    <!-- 配置视图解析器 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    	<!-- 配置视图的前缀 -->
+    	<property name="prefix" value="/view/"></property>
+    	<!-- 配置视图的后缀 -->
+    	<property name="suffix" value=".jsp"></property>
+    </bean>
+    
+    <!-- 自定义参数绑定 -->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+    	<!-- 定义转换器 -->
+    	<property name="converters">
+    		<list>
+    			<!-- 定义日期转换器 -->
+    			<bean class="com.guigu.instructional.converter.CustomDateConverter"></bean>
+    			<!-- 还可定义其他的转换器 -->
+    		</list>
+    	</property>
+    </bean>
+
+</beans>

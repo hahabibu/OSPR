@@ -1,0 +1,35 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<meta http-equiv="Content-Type" content="text/html";charset="utf-8">
+
+<link href="${pageContext.request.contextPath }/resource/assets/css/bootstrap.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resource/assets/css/font-awesome.min.css"/> 
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resource/assets/css/ace.min.css"/> 
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resource/assets/css/ace-trl.min.css"/> 
+<link rel="stylesheet" href="${pageContext.request.contextPath }/resource/assets/css/ace-skins.min.css"/> 
+
+<script src="${pageContext.request.contextPath }/resource/assets/js/ace-extra.min.js"></script>
+
+<script src="${pageContext.request.contextPath }/resource/js/jquery.min.js"></script>
+
+<script src="${pageContext.request.contextPath }/resource/assets/js/typeahead-bs2.min.js"></script>
+<script src="${pageContext.request.contextPath }/resource/assets/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="${pageContext.request.contextPath }/resource/assets/js/jquery.ui.touch-punch.min.js"></script>
+<script src="${pageContext.request.contextPath }/resource/assets/js/jquery.slimscroll.min.js"></script>
+<script src="${pageContext.request.contextPath }/resource/assets/js/jquery.easy-pie-chart.min.js"></script>
+<script src="${pageContext.request.contextPath }/resource/assets/js/jquery.sparkline.min.js"></script>
+<script src="${pageContext.request.contextPath }/resource/assets/js/flot/jquery.flot.min.js"></script>
+<script src="${pageContext.request.contextPath }/resource/assets/js/flot/jquery.flot.pie.min.js"></script>
+<script src="${pageContext.request.contextPath }/resource/assets/js/flot/jquery.flot.resize.min.js"></script>
+<script src="${pageContext.request.contextPath }/resource/assets/js/ace-elements.min.js"></script>
+<script src="${pageContext.request.contextPath }/resource/assets/js/ace.min.js"></script>
+
+<!-- 引用日期插件 -->
+<script src="${pageContext.request.contextPath }/resource/My97DatePicker/WdatePicker.js"></script>
+
+<!-- 引入自定义的js文件 -->
+<script src="${pageContext.request.contextPath }/resource/custom/address.js"></script>
+
+<!-- dtree -->
+<script src="${pageContext.request.contextPath}/resource/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resource/css/dtree.css">
+<script src="${pageContext.request.contextPath}/resource/js/dtree.js"></script>

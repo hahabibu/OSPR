@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guigu.instructional.system.mapper.AuthortyInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.guigu.instructional.po.AuthortyInfo" >
+    <id column="authorty_id" property="authortyId" jdbcType="INTEGER" />
+    <result column="authorty_pid" property="authortyPid" jdbcType="INTEGER" />
+    <result column="authorty_name" property="authortyName" jdbcType="VARCHAR" />
+    <result column="authorty_desc" property="authortyDesc" jdbcType="VARCHAR" />
+    <result column="authorty_url" property="authortyUrl" jdbcType="VARCHAR" />
+    <result column="authorty_class" property="authortyClass" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    authorty_id, authorty_pid, authorty_name, authorty_desc, authorty_url, authorty_class
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.guigu.instructional.po.AuthortyInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from authorty_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from authorty_info
+    where authorty_id = #{authortyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from authorty_info
+    where authorty_id = #{authortyId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.guigu.instructional.po.AuthortyInfoExample" >
+    delete from authorty_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.guigu.instructional.po.AuthortyInfo" >
+    insert into authorty_info (authorty_id, authorty_pid, authorty_name, 
+      authorty_desc, authorty_url, authorty_class
+      )
+    values (#{authortyId,jdbcType=INTEGER}, #{authortyPid,jdbcType=INTEGER}, #{authortyName,jdbcType=VARCHAR}, 
+      #{authortyDesc,jdbcType=VARCHAR}, #{authortyUrl,jdbcType=VARCHAR}, #{authortyClass,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.guigu.instructional.po.AuthortyInfo" >
+    insert into authorty_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="authortyId != null" >
+        authorty_id,
+      </if>
+      <if test="authortyPid != null" >
+        authorty_pid,
+      </if>
+      <if test="authortyName != null" >
+        authorty_name,
+      </if>
+      <if test="authortyDesc != null" >
+        authorty_desc,
+      </if>
+      <if test="authortyUrl != null" >
+        authorty_url,
+      </if>
+      <if test="authortyClass != null" >
+        authorty_class,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="authortyId != null" >
+        #{authortyId,jdbcType=INTEGER},
+      </if>
+      <if test="authortyPid != null" >
+        #{authortyPid,jdbcType=INTEGER},
+      </if>
+      <if test="authortyName != null" >
+        #{authortyName,jdbcType=VARCHAR},
+      </if>
+      <if test="authortyDesc != null" >
+        #{authortyDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="authortyUrl != null" >
+        #{authortyUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="authortyClass != null" >
+        #{authortyClass,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.guigu.instructional.po.AuthortyInfoExample" resultType="java.lang.Integer" >
+    select count(*) from authorty_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update authorty_info
+    <set >
+      <if test="record.authortyId != null" >
+        authorty_id = #{record.authortyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.authortyPid != null" >
+        authorty_pid = #{record.authortyPid,jdbcType=INTEGER},
+      </if>
+      <if test="record.authortyName != null" >
+        authorty_name = #{record.authortyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.authortyDesc != null" >
+        authorty_desc = #{record.authortyDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.authortyUrl != null" >
+        authorty_url = #{record.authortyUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.authortyClass != null" >
+        authorty_class = #{record.authortyClass,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update authorty_info
+    set authorty_id = #{record.authortyId,jdbcType=INTEGER},
+      authorty_pid = #{record.authortyPid,jdbcType=INTEGER},
+      authorty_name = #{record.authortyName,jdbcType=VARCHAR},
+      authorty_desc = #{record.authortyDesc,jdbcType=VARCHAR},
+      authorty_url = #{record.authortyUrl,jdbcType=VARCHAR},
+      authorty_class = #{record.authortyClass,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.guigu.instructional.po.AuthortyInfo" >
+    update authorty_info
+    <set >
+      <if test="authortyPid != null" >
+        authorty_pid = #{authortyPid,jdbcType=INTEGER},
+      </if>
+      <if test="authortyName != null" >
+        authorty_name = #{authortyName,jdbcType=VARCHAR},
+      </if>
+      <if test="authortyDesc != null" >
+        authorty_desc = #{authortyDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="authortyUrl != null" >
+        authorty_url = #{authortyUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="authortyClass != null" >
+        authorty_class = #{authortyClass,jdbcType=INTEGER},
+      </if>
+    </set>
+    where authorty_id = #{authortyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.guigu.instructional.po.AuthortyInfo" >
+    update authorty_info
+    set authorty_pid = #{authortyPid,jdbcType=INTEGER},
+      authorty_name = #{authortyName,jdbcType=VARCHAR},
+      authorty_desc = #{authortyDesc,jdbcType=VARCHAR},
+      authorty_url = #{authortyUrl,jdbcType=VARCHAR},
+      authorty_class = #{authortyClass,jdbcType=INTEGER}
+    where authorty_id = #{authortyId,jdbcType=INTEGER}
+  </update>
+</mapper>
